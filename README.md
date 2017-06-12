@@ -10,11 +10,13 @@ This projects aim is to optimize this online portfolio for speed! In particular,
 - Type `gulp` to test automation.
 - Any file changes made on `src` folder will be watched and optimized files will be processed to `dist` folder.
 - Start checking by `dist/index.html` file.
+- Click to check [github hosted online](https://gokhanap.github.io/frontend-nanodegree-mobile-portfolio/dist/index.html)
 
 ## Optimizations
 ### Part 1: Optimize PageSpeed Insights score for index.html
 - Web font deactivated.
-- Script and link tags moved before the closing body tag
+- Script and link tags moved before the closing body tag.
+- `style.css` inlined.
 - Media attribute added to print.css to reduce critical resources.
 - Async attribute added to script js sources to reduce critical resources.
 - HTML, CSS, JS files minified with gulp.
