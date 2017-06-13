@@ -511,8 +511,8 @@ function updatePositions() {
 // phase calculation moved out of for function
 // since that it only needs to be calculated 5 times.
   var phase = [];
-  for (var i = 0; i < 5; i++) {
-    phase.push(Math.sin(docBodyScrollTop + i));
+  for (var j = 0; j < 5; j++) {
+    phase.push(Math.sin(docBodyScrollTop + j));
   }
 
   for (var i = 0; i < items.length; i++) {
