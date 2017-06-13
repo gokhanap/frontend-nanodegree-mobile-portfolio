@@ -431,7 +431,7 @@ var resizePizzas = function(size) {
         case "2":
           return 33.3;
         case "3":
-          return 100;
+          return 50;
         default:
           console.log("bug in sizeSwitcher");
       }
@@ -508,9 +508,15 @@ function updatePositions() {
 
   var items = document.querySelectorAll('.mover');
 
+// phase calculation moved out of for function
+// since that it only needs to be calculated 5 times.
+  var phase = [];
+  for (var i = 0; i < 5; i++) {
+    phase.push(Math.sin(docBodyScrollTop + i));
+  }
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin(docBodyScrollTop + (i % 5));
-    items[i].style.left = (items[i].basicLeft) + 100 * phase + 'px';
+    items[i].style.left = (items[i].basicLeft) + 100 * phase[i % 5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -530,7 +536,15 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+
+// scrollPizzas added to calcute the number of loop.
+  var screenHeight = screen.height;
+  var scrollPizzas = screenHeight / s * cols;
+
+// query selector moved out of for loop
+  var movingPizzas1 = document.querySelector("#movingPizzas1");
+
+  for (var i = 0; i < scrollPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -538,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas1.appendChild(elem);
   }
   updatePositions();
 });
