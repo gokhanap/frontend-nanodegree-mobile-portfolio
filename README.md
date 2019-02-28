@@ -1,3 +1,4 @@
+![Website Performance Optimization preview](https://gokhanapaydin.com/img/project3_1200.jpg)
 
 # Website Performance Optimization portfolio project
 
